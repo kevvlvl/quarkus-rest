@@ -4,7 +4,7 @@ This project uses Quarkus, the Supersonic Subatomic Java Framework.
 
 If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ .
 
-###Api Calls
+### Api Calls
 * http://localhost:8080/health
 * http://localhost:8080/product
 
