@@ -5,8 +5,9 @@ This project uses Quarkus, the Supersonic Subatomic Java Framework.
 If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ .
 
 ### Api Calls
-* http://localhost:8080/health
-* http://localhost:8080/product
+* curl http://localhost:8080/health
+* curl http://localhost:8080/product
+* curl -X POST -H "Content-Type: application/json" http://localhost:8080/message/send -d '{"message": "They should call it Roundtine"}'
 
 ## Running the application in dev mode
 

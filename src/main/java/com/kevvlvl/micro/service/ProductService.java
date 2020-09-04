@@ -3,12 +3,12 @@ package com.kevvlvl.micro.service;
 import com.kevvlvl.micro.model.Product;
 import lombok.Getter;
 
-import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.context.RequestScoped;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Set;
 
-@ApplicationScoped
+@RequestScoped
 public class ProductService {
 
     @Getter
