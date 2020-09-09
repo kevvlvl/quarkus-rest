@@ -11,7 +11,7 @@ import javax.ws.rs.core.MediaType;
 public class HealthResource {
 
     @ConfigProperty(name = "system.name")
-    private String systemName;
+    String systemName;
 
     @GET
     @Produces(MediaType.TEXT_PLAIN)

@@ -1,12 +1,19 @@
 package com.kevvlvl.micro;
 
 import com.kevvlvl.micro.dto.MessageDto;
+import io.smallrye.mutiny.Uni;
+import io.vertx.mutiny.core.eventbus.EventBus;
+import io.vertx.mutiny.core.eventbus.Message;
 
+import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
 @Path("/message")
 public class MessagingResource {
+
+    @Inject
+    EventBus bus;
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
@@ -14,7 +21,8 @@ public class MessagingResource {
     @Path("/send")
     public String sendMessage(MessageDto message) {
 
-        // TODO: implement async messaging between controller and an inbox where we can log reception of messages and implement workflow
+        Uni<Object> returnMsg = bus.<String>request("inbox", message.getMessage())
+                .onItem().apply(Message::body);
 
         return message.toString();
     }
