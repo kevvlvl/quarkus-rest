@@ -14,6 +14,10 @@ If you want to learn more about Quarkus, please visit its website: https://quark
 * Socket at ws://localhost:8080/broadcast/{user}
 * See chat.html in resources/META-INF.resources for client socket integration
 
+## OpenAPI docs
+
+* curl http://localhost:8080/openapi
+* Open in : http://localhost:8080/swagger-ui
 
 ## Running the application in dev mode
 
