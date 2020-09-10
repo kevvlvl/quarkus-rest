@@ -9,6 +9,12 @@ If you want to learn more about Quarkus, please visit its website: https://quark
 * curl http://localhost:8080/product
 * curl -X POST -H "Content-Type: application/json" http://localhost:8080/message/send -d '{"message": "They should call it Roundtine"}'
 
+### Sockets
+
+* Socket at ws://localhost:8080/broadcast/{user}
+* See chat.html in resources/META-INF.resources for client socket integration
+
+
 ## Running the application in dev mode
 
 You can run your application in dev mode that enables live coding using:
