@@ -1,4 +1,4 @@
-package com.kevvlvl.micro;
+package com.kevvlvl.micro.resource;
 
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 

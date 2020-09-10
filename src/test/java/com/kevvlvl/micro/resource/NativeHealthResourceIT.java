@@ -1,5 +1,6 @@
-package com.kevvlvl.micro;
+package com.kevvlvl.micro.resource;
 
+import com.kevvlvl.micro.resource.HealthResourceTest;
 import io.quarkus.test.junit.NativeImageTest;
 
 @NativeImageTest

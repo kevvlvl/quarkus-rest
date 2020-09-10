@@ -1,4 +1,4 @@
-package com.kevvlvl.micro;
+package com.kevvlvl.micro.resource;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

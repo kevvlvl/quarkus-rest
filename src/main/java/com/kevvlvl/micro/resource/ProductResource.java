@@ -1,4 +1,4 @@
-package com.kevvlvl.micro;
+package com.kevvlvl.micro.resource;
 
 import com.kevvlvl.micro.model.Product;
 import com.kevvlvl.micro.service.ProductService;

@@ -1,21 +1,22 @@
-package com.kevvlvl.micro;
+package com.kevvlvl.micro.resource;
 
 import io.quarkus.test.junit.QuarkusTest;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.notNullValue;
+import static org.hamcrest.Matchers.containsString;
 
 @QuarkusTest
-public class ProductResourceTest {
+public class HealthResourceTest {
 
     @Test
-    public void testGetProducts() {
+    public void testHelloEndpoint() {
         given()
-                .when().get("/product")
+                .when().get("/health")
                 .then()
                 .statusCode(200)
-                .body(is(notNullValue()));
+                .body(containsString("Api is up"));
     }
+
 }

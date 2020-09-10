@@ -1,4 +1,4 @@
-package com.kevvlvl.micro;
+package com.kevvlvl.micro.resource;
 
 import com.kevvlvl.micro.dto.MessageDto;
 import io.smallrye.mutiny.Uni;
