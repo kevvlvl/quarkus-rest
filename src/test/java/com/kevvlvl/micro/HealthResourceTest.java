@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.Matchers.containsString;
 
 @QuarkusTest
 public class HealthResourceTest {
@@ -15,7 +16,7 @@ public class HealthResourceTest {
                 .when().get("/health")
                 .then()
                 .statusCode(200)
-                .body(is("API up"));
+                .body(containsString("Api is up"));
     }
 
 }

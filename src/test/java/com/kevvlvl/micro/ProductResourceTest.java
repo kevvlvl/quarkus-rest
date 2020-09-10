@@ -8,7 +8,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
 
 @QuarkusTest
-public class ProductTest {
+public class ProductResourceTest {
 
     @Test
     public void testGetProducts() {
