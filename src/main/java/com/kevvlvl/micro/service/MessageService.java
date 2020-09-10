@@ -9,10 +9,10 @@ import javax.enterprise.context.ApplicationScoped;
 @ApplicationScoped
 public class MessageService {
 
-    @ConsumeEvent("inbox")
+    @ConsumeEvent(value = "inbox")
     public String consume(String message) {
 
         log.info("Inbox Message consumed: {}", message);
-        return "Message Consumed: " + message;
+        return "CONSUMED: " + message;
     }
 }

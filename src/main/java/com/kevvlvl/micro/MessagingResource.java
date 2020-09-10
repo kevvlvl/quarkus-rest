@@ -19,11 +19,9 @@ public class MessagingResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.TEXT_PLAIN)
     @Path("/send")
-    public String sendMessage(MessageDto message) {
+    public Uni<String> sendMessage(MessageDto message) {
 
-        Uni<Object> returnMsg = bus.<String>request("inbox", message.getMessage())
-                .onItem().apply(Message::body);
-
-        return message.toString();
+        return bus.<String>request("inbox", message.getMessage())
+                .onItem().transform(Message::body);
     }
 }
