@@ -1,11 +1,12 @@
 package com.kevvlvl.micro.resource;
 
+import com.kevvlvl.micro.dto.ProductDto;
 import com.kevvlvl.micro.model.Product;
 import com.kevvlvl.micro.service.ProductService;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-import java.util.Set;
+import java.util.List;
 
 @Path("/product")
 @Consumes(MediaType.APPLICATION_JSON)
@@ -19,13 +20,13 @@ public class ProductResource {
     }
 
     @GET
-    public Set<Product> list() {
+    public List<Product> list() {
         return this.productService.getProducts();
     }
 
     @POST
-    public Set<Product> add(Product p) {
-        this.productService.getProducts().add(p);
-        return this.productService.getProducts();
+    public int add(ProductDto dto) {
+        int productId = this.productService.createProduct(dto);
+        return productId;
     }
 }

@@ -1,0 +1,9 @@
+CREATE DATABASE quarkydb;
+
+CREATE TABLE product (
+    ID          SERIAL,
+    NAME        VARCHAR,
+    DESCRIPTION VARCHAR,
+    PRICE       FLOAT,
+    CONSTRAINT PK_PRODUCT_ID PRIMARY KEY (ID)
+)

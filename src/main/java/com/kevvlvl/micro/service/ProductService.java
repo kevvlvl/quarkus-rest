@@ -1,26 +1,44 @@
 package com.kevvlvl.micro.service;
 
+import com.kevvlvl.micro.dto.ProductDto;
 import com.kevvlvl.micro.model.Product;
-import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
-import java.util.Collections;
-import java.util.LinkedHashMap;
-import java.util.Set;
+import javax.inject.Inject;
+import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
+import java.util.List;
 
 @Slf4j
 @RequestScoped
 public class ProductService {
 
-    @Getter
-    private Set<Product> products;
+    private EntityManager em;
 
-    public ProductService() {
-        products = Collections.newSetFromMap(Collections.synchronizedMap(new LinkedHashMap<>()));
-        products.add(new Product("Laptop", "Thinkpad T480", 1200.50));
-        products.add(new Product("Chair", "Fancy Pantsy chair", 500.25));
+    @Inject
+    public ProductService(EntityManager em) {
+        this.em = em;
+    }
 
-        log.info("ProductService initialized");
+    @Transactional
+    public int createProduct(ProductDto dto) {
+
+        Product p = new Product();
+        p.setName(dto.getName());
+        p.setDescription(dto.getDescription());
+        p.setPrice(dto.getPrice());
+
+        em.persist(p);
+
+        log.info("createProduct() - Persisted entity {}", p);
+
+        return p.getId();
+    }
+
+    public List<Product> getProducts() {
+        return em.createNamedQuery("Product.findAll", Product.class)
+                .getResultList();
     }
 }
