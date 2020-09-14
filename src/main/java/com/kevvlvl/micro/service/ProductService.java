@@ -4,7 +4,6 @@ import com.kevvlvl.micro.dto.ProductDto;
 import com.kevvlvl.micro.model.Product;
 import lombok.extern.slf4j.Slf4j;
 
-import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
