@@ -8,17 +8,22 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
+import javax.validation.ConstraintViolation;
+import javax.validation.Validator;
 import java.util.List;
+import java.util.Set;
 
 @Slf4j
 @RequestScoped
 public class ProductService {
 
     private EntityManager em;
+    private Validator validator;
 
     @Inject
-    public ProductService(EntityManager em) {
+    public ProductService(EntityManager em, Validator validator) {
         this.em = em;
+        this.validator = validator;
     }
 
     @Transactional
@@ -29,9 +34,16 @@ public class ProductService {
         p.setDescription(dto.getDescription());
         p.setPrice(dto.getPrice());
 
-        em.persist(p);
+        Set<ConstraintViolation<Product>> violations = validator.validate(p);
 
-        log.info("createProduct() - Persisted entity {}", p);
+        if(violations.isEmpty()) {
+            em.persist(p);
+            log.info("createProduct() - Persisted entity {}", p);
+        }
+        else {
+            log.error("createProduct() - Failed to validate product!");
+            violations.stream().forEach(v -> log.error(" - violation: " + v.getMessage()));
+        }
 
         return p.getId();
     }
