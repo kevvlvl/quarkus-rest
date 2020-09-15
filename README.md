@@ -6,6 +6,7 @@ If you want to learn more about Quarkus, please visit its website: https://quark
 
 ### Api Calls
 * Custom Health Check: curl http://localhost:8080/health
+* Custom Health Check delayed: curl http://localhost:8080/health/async
 * Get All Products: curl http://localhost:8080/product
 * Product Creation: curl -X POST -H "Content-Type: application/json" http://localhost:8080/product -d '{"name": "Ovaltine", "description": "They should call it Roundtine", "price": "3.50"}'
 * Event bus message: curl -X POST -H "Content-Type: application/json" http://localhost:8080/message/send -d '{"message": "They should call it Roundtine"}'
