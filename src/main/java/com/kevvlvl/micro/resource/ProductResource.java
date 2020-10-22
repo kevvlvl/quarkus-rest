@@ -1,7 +1,6 @@
 package com.kevvlvl.micro.resource;
 
 import com.kevvlvl.micro.dto.ProductDto;
-import com.kevvlvl.micro.model.Product;
 import com.kevvlvl.micro.service.ProductService;
 
 import javax.ws.rs.*;
@@ -20,13 +19,13 @@ public class ProductResource {
     }
 
     @GET
-    public List<Product> list() {
+    public List<ProductDto> list() {
         return this.productService.getProducts();
     }
 
     @POST
     public int add(ProductDto dto) {
-        int productId = this.productService.createProduct(dto);
-        return productId;
+        dto = this.productService.saveProduct(dto);
+        return dto.getId();
     }
 }

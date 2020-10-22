@@ -12,14 +12,20 @@ import javax.validation.constraints.NotBlank;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@NamedQuery(
-        name = "Product.findAll",
-        query = "SELECT p FROM Product p ORDER BY p.name"
-)
+@NamedQueries({
+        @NamedQuery(
+                name = "Product.findAll",
+                query = "SELECT p FROM Product p ORDER BY p.name"
+        ),
+        @NamedQuery(
+                name = "Product.findById",
+                query = "SELECT p FROM Product p WHERE p.id = :id"
+        ),
+})
 public class Product {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "product_id_seq")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @NotBlank(message="Name cannot be blank")
